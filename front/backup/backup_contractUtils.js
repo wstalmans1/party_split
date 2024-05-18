@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import ContractABI from './contractABI.json';
+import ContractABI from '../src/contractABI.json';
 
 const contractAddress = '0xF98569F595Df44242c34329c6F4d17221c71107b';
 
