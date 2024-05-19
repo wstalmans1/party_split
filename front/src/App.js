@@ -9,7 +9,7 @@ function App() {
   const [connectedAccount, setConnectedAccount] = useState(null);
   const [balance, setBalance] = useState(null);
   //const [count, setCount] = useState(null);
-  const [loading, setLoading] = useState(false); //added loading state
+  //const [loading, setLoading] = useState(false); //added loading state
 
   // Metamask
   async function handleConnectMetamask() {
@@ -32,7 +32,7 @@ function App() {
   async function fetchBalance() {
     const balanceValue = await getTotalDeposits();
     setBalance(balanceValue.toString());
-    setLoading(false); // Stop loading after fetching
+    //setLoading(false); // Stop loading after fetching
   }
 
   // Get the value of the variable "count"
@@ -44,17 +44,19 @@ function App() {
   }
   */
 
-  
+
   // Increment the value of the variable "count"
+  
   async function handleIncrement() {
     if(!connectedAccount) {
       alert('Please connect to Metamask first');
       return;
     }
-    setLoading(true); // Start loading before the transaction
+    //setLoading(true); // Start loading before the transaction
     await incrementCount();
     fetchCount(); // Refresh the count after increment
   }
+  
 
   // Decrement the value of the variable "count"
   async function handleDecrement() {
@@ -62,7 +64,7 @@ function App() {
       alert('Please connect to Metamask first');
       return;
     }
-    setLoading(true); // Start loading before the transaction
+    //setLoading(true); // Start loading before the transaction
     await decrementCount();
     fetchCount();
   }
@@ -73,12 +75,15 @@ function App() {
     }
   }, [connectedAccount]);
 
+  // This line was causing a dependency problem. I excluded it from the return function here below. It was positioned below "<p>Contract Balance: {balance !== null ? balance : 'Loading...'}</p>" and above "<button onClick={handleIncrement}>Increment</button>"
+  //  {loading && <p>Waiting for your latest transaction to be inserted in a block...</p>}      
+
   return (
     <header className="App-header">
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
         <p>Contract Balance: {balance !== null ? balance : 'Loading...'}</p>
-        {loading && <p>Waiting for your latest transaction to be inserted in a block...</p>}      
+
         <button onClick={handleIncrement}>Increment</button>
         <p></p>
         <button onClick={handleDecrement}>Decrement</button>    
