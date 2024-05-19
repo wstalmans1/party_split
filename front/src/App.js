@@ -46,7 +46,7 @@ function App() {
 
 
   // Increment the value of the variable "count"
-  
+  /*
   async function handleIncrement() {
     if(!connectedAccount) {
       alert('Please connect to Metamask first');
@@ -54,9 +54,9 @@ function App() {
     }
     //setLoading(true); // Start loading before the transaction
     await incrementCount();
-    fetchCount(); // Refresh the count after increment
+    fetchBalance(); // Refresh the count after increment
   }
-  
+  */
 
   // Decrement the value of the variable "count"
   async function handleDecrement() {
@@ -66,8 +66,9 @@ function App() {
     }
     //setLoading(true); // Start loading before the transaction
     await decrementCount();
-    fetchCount();
+    fetchBalance();
   }
+  
 
   useEffect(() => {
     if(connectedAccount) {
@@ -76,13 +77,13 @@ function App() {
   }, [connectedAccount]);
 
   // This line was causing a dependency problem. I excluded it from the return function here below. It was positioned below "<p>Contract Balance: {balance !== null ? balance : 'Loading...'}</p>" and above "<button onClick={handleIncrement}>Increment</button>"
-  //  {loading && <p>Waiting for your latest transaction to be inserted in a block...</p>}      
+  //    <p>Contract Balance: {balance !== null ? balance : 'Loading...'}</p>
+  //    {loading && <p>Waiting for your latest transaction to be inserted in a block...</p>}      
 
   return (
     <header className="App-header">
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
-        <p>Contract Balance: {balance !== null ? balance : 'Loading...'}</p>
 
         <button onClick={handleIncrement}>Increment</button>
         <p></p>
