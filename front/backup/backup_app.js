@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connectMetamask, listenForAccountChanges } from './connectMetamask';
-import { getTotalDeposits} from './contractUtils.js';
-//import { getCount, incrementCount, decrementCount} from './contractUtils.js';
+import { getCount, incrementCount, decrementCount} from './contractUtils.js';
 import './App.css';
 
 
@@ -26,7 +25,6 @@ function App() {
     }
   }
 
-  // Interact with smart contract, get values, send transactions
   // Get the value of the variable "count"
   async function fetchCount() {
     const countValue = await getCount();
