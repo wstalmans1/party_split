@@ -25,6 +25,7 @@ export async function getTotalDeposits() {
   return ethers.utils.formatEther(totalDeposits); // convert BigNumber to string in ether format
 }
 
+/*
 export async function rsvp() {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);
@@ -33,20 +34,25 @@ export async function rsvp() {
   await tx.wait(); // wait for transaction confirmation
   return tx.hash; // return transaction hash
 }
+*/
 
+/*
 export async function checkPayment(address) {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);
   const payment = await contract.payments(address); // read the payment mapping for the given address
   return ethers.utils.formatEther(payment); // convert BigNumber to string in ether format
 }
+*/
 
+/*
 export async function getCost() {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);
   const cost = await contract.cost(); // call the cost function
   return ethers.utils.formatEther(cost); // convert BigNumber to string in ether format
 }
+*/
 
 /*
 export async function getCount() {
