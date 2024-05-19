@@ -7,7 +7,8 @@ import './App.css';
 
 function App() {
   const [connectedAccount, setConnectedAccount] = useState(null);
-  const [count, setCount] = useState(null);
+  const [balance, setBalance] = useState(null);
+  //const [count, setCount] = useState(null);
   const [loading, setLoading] = useState(false); //added loading state
 
   // Metamask
@@ -27,6 +28,13 @@ function App() {
   }
 
   // Interact with smart contract, get values, send transactions
+  // Get the value of total balance in the contract
+  async function fetchBalance() {
+    const balanceValue = await getTotalDeposits();
+    setBalance(balanceValue.toString());
+    setLoading(false); // Stop loading after fetching
+  }
+
   // Get the value of the variable "count"
   async function fetchCount() {
     const countValue = await getCount();
@@ -58,7 +66,7 @@ function App() {
 
   useEffect(() => {
     if(connectedAccount) {
-      fetchCount();
+      fetchBalance();
     }
   }, [connectedAccount]);
 
@@ -66,7 +74,7 @@ function App() {
     <header className="App-header">
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
-        <p>Count: {count !== null ? count : 'Loading...'}</p>
+        <p>Contract Balance: {balance !== null ? balance : 'Loading...'}</p>
         {loading && <p>Waiting for your latest transaction to be inserted in a block...</p>}      
         <button onClick={handleIncrement}>Increment</button>
         <p></p>
