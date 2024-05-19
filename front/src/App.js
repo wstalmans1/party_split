@@ -21,7 +21,7 @@ function App() {
       const account = await connectMetamask();
       setConnectedAccount(account);
       listenForAccountChanges(setConnectedAccount);
-      fetchCount();
+      fetchBalance();
     } catch (error) {
       alert(error.message);
     }
@@ -36,12 +36,15 @@ function App() {
   }
 
   // Get the value of the variable "count"
+  /*
   async function fetchCount() {
     const countValue = await getCount();
     setCount(countValue.toString());
     setLoading(false); // Stop loading after fetching
   }
+  */
 
+  
   // Increment the value of the variable "count"
   async function handleIncrement() {
     if(!connectedAccount) {
@@ -51,7 +54,7 @@ function App() {
     setLoading(true); // Start loading before the transaction
     await incrementCount();
     fetchCount(); // Refresh the count after increment
-  } 
+  }
 
   // Decrement the value of the variable "count"
   async function handleDecrement() {
