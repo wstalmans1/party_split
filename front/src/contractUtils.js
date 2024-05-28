@@ -25,7 +25,7 @@ export async function getTotalDeposits() {
   return ethers.utils.formatEther(totalDeposits); // convert BigNumber to string in ether format
 }
 
-/*
+
 export async function rsvp() {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);
@@ -34,7 +34,7 @@ export async function rsvp() {
   await tx.wait(); // wait for transaction confirmation
   return tx.hash; // return transaction hash
 }
-*/
+
 
 /*
 export async function checkPayment(address) {
