@@ -61,7 +61,9 @@ export async function getCount() {
   const count = await contract.get(); // assumes "get" in ABI
   return count.toNumber(); // convert BigNumber to number
 }
+*/
 
+/*
 export async function incrementCount() {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);
@@ -69,7 +71,9 @@ export async function incrementCount() {
   await tx.wait(); // wait for transaction confirmation
   return tx.hash; // return transaction hash
 }
+*/
 
+/*
 export async function decrementCount() {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);

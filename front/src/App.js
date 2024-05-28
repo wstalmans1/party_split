@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { connectMetamask, listenForAccountChanges } from './connectMetamask';
 import { getTotalDeposits} from './contractUtils.js';
-//import { getCount, incrementCount, decrementCount} from './contractUtils.js';
+import { getCount} from './contractUtils.js';
+//import { incrementCount} from './contractUtils.js';
+//import { decrementCount} from './contractUtils.js';
 import './App.css';
 
 
@@ -45,8 +47,8 @@ function App() {
   */
 
 
-  // Increment the value of the variable "count"
   /*
+  // Increment the value of the variable "count"
   async function handleIncrement() {
     if(!connectedAccount) {
       alert('Please connect to Metamask first');
@@ -57,7 +59,9 @@ function App() {
     fetchBalance(); // Refresh the count after increment
   }
   */
+  
 
+  /*
   // Decrement the value of the variable "count"
   async function handleDecrement() {
     if(!connectedAccount) {
@@ -68,6 +72,7 @@ function App() {
     await decrementCount();
     fetchBalance();
   }
+  */
   
 
   useEffect(() => {
@@ -85,9 +90,9 @@ function App() {
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
 
-        <button onClick={handleIncrement}>Increment</button>
+        { /* <button onClick={handleIncrement}>Increment</button> */ }
         <p></p>
-        <button onClick={handleDecrement}>Decrement</button>    
+        { /* <button onClick={handleDecrement}>Decrement</button> */ }
     </header>
   );
 }
