@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { connectMetamask, listenForAccountChanges } from './connectMetamask';
 import { getTotalDeposits} from './contractUtils.js';
-import { getCount} from './contractUtils.js';
+//import { getCount} from './contractUtils.js';
 //import { incrementCount} from './contractUtils.js';
 //import { decrementCount} from './contractUtils.js';
 import './App.css';
+import Apptest from './learningReactComponents.js';
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
         { /* <button onClick={handleIncrement}>Increment</button> */ }
         <p></p>
         { /* <button onClick={handleDecrement}>Decrement</button> */ }
+        <Apptest />
     </header>
   );
 }
