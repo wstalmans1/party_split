@@ -5,10 +5,6 @@ import { getTotalDeposits, rsvp } from './contractUtils.js';
 //import { incrementCount} from './contractUtils.js';
 //import { decrementCount} from './contractUtils.js';
 import './App.css';
-import Apptest from './learningReactComponents.js';
-
-
-
 
 function App() {
   const [connectedAccount, setConnectedAccount] = useState(null);
@@ -119,11 +115,11 @@ function App() {
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
         <p>Contract Balance: {balance !== null ? balance : 'loading...'} </p>
+        {loading && <p>Waiting for your transaction to be confirmed...</p>}
+        <button onClick={handleRSVP}>RSVP</button>
+        {transactionHash && <p>Transaction Hash: {transactionHash} </p>}
         { /* <button onClick={handleIncrement}>Increment</button> */ }
-        <p></p>
         { /* <button onClick={handleDecrement}>Decrement</button> */ }
-        <Apptest />
-        
     </header>
   );
 }
