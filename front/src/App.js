@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connectMetamask, listenForAccountChanges } from './connectMetamask';
-import { getTotalDeposits } from './contractUtils.js';
+import { getTotalDeposits, rsvp } from './contractUtils.js';
 //import { getCount} from './contractUtils.js';
 //import { incrementCount} from './contractUtils.js';
 //import { decrementCount} from './contractUtils.js';
@@ -9,9 +9,12 @@ import Apptest from './learningReactComponents.js';
 
 
 
+
 function App() {
   const [connectedAccount, setConnectedAccount] = useState(null);
   const [balance, setBalance] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [transactionHash, setTransactionHash] = useState(null);
   //const [count, setCount] = useState(null);
   //const [loading, setLoading] = useState(false); //added loading state
 
@@ -42,6 +45,25 @@ function App() {
       console.error('error fetching balance:', error);
     }
     //setLoading(false); // Stop loading after fetching
+  }
+
+  // RSVP trasnaction
+  async function handleRSVP() {
+    if (!connectedAccount) {
+      alert('Please connect to Metamask first');
+      return;
+    }
+    setLoading(true);
+    try {
+      const txHash = await rsvp();
+      setTransactionHash(txHash);
+      alert(`Transaction successful with hash: ${txHash}`);
+      fetchBalance(); //refresh balance after RSVP
+    } catch (error) {
+      alert(`Transaction failed: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
   }
 
   // Get the value of the variable "count"
