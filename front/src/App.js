@@ -116,7 +116,7 @@ function App() {
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
         <p>Contract Balance: {balance !== null ? balance : 'loading...'} </p>
         {loading && <p>Waiting for your transaction to be confirmed...</p>}
-        <button onClick={handleRSVP}>RSVP</button>
+        <button onClick={handleRSVP}>Click here to send 0.01 ETH to the partysplit contract</button>
         {transactionHash && <p>Transaction Hash: {transactionHash} </p>}
         { /* <button onClick={handleIncrement}>Increment</button> */ }
         { /* <button onClick={handleDecrement}>Decrement</button> */ }
