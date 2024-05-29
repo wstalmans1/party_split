@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { connectMetamask, listenForAccountChanges } from './connectMetamask';
-import { getTotalDeposits} from './contractUtils.js';
+import { getTotalDeposits } from './contractUtils.js';
 //import { getCount} from './contractUtils.js';
 //import { incrementCount} from './contractUtils.js';
 //import { decrementCount} from './contractUtils.js';
 import './App.css';
 import Apptest from './learningReactComponents.js';
+
 
 
 function App() {
@@ -33,8 +34,13 @@ function App() {
   // Interact with smart contract, get values, send transactions
   // Get the value of total balance in the contract
   async function fetchBalance() {
-    const balanceValue = await getTotalDeposits();
-    setBalance(balanceValue.toString());
+    try {
+      const balanceValue = await getTotalDeposits();
+      setBalance(balanceValue);
+      console.log(balanceValue);
+    } catch (error) {
+      console.error('error fetching balance:', error);
+    }
     //setLoading(false); // Stop loading after fetching
   }
 
@@ -90,11 +96,12 @@ function App() {
     <header className="App-header">
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
         <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
-
+        <p>Contract Balance: {balance !== null ? balance : 'loading...'} </p>
         { /* <button onClick={handleIncrement}>Increment</button> */ }
         <p></p>
         { /* <button onClick={handleDecrement}>Decrement</button> */ }
         <Apptest />
+        
     </header>
   );
 }
