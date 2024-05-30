@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import ContractABI from './contractABI.json';
 
-export const contractAddress = '0xfD1Ac56c3288419f5966e1A135cc819908B781FC';
+export const contractAddress = '0xd34CF2A413c29B058Fd2634d170180cEF38A92Ec';
 
 // The functions getWeb3Provider and getContract are not smart contract specific and can remain untouched
 export async function getWeb3Provider() {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-contract PartySplit4 {
+contract PartySplit5 {
     uint256 public cost;
     mapping (address => bool) public payments;
     address[] public members; 
