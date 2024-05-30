@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import ContractABI from './contractABI.json';
 
-export const contractAddress = '0xBAC361fEd24C58a1ccD930A019079cF1Ec007323';
+export const contractAddress = '0xa684B88c72D83677015f5EcB479b346A51941044';
 
 // The functions getWeb3Provider and getContract are not smart contract specific and can remain untouched
 export async function getWeb3Provider() {
@@ -34,6 +34,18 @@ export async function rsvp() {
   await tx.wait(); // wait for transaction confirmation
   return tx.hash; // return transaction hash
 }
+
+
+export async function payBill(venueAddress, billAmount) {
+  const provider = await getWeb3Provider();
+  const contract = getContract(provider);
+  const billAmountInWei = billAmount;
+  //const billAmountInWei = ethers.utils.parseEther(billAmount); // Convert the bill amount to Wei
+  const tx = await contract.payBill(venueAddress, billAmountInWei); // send the transaction
+  await tx.wait(); // wait for transaction confirmation
+  return tx.hash; // return transaction hash
+}
+
 
 
 /*
