@@ -3,6 +3,6 @@ const { ethers } = require("ethers");
 
 module.exports = buildModule("PartySplitModule", (m) => {
   //const cost = ethers.utils.parseUnits("10000000000000000");
-  const partySplit = m.contract("PartySplit2", ["10000000000000000"]);
-  return { partySplit };
+  const partySplit2 = m.contract("PartySplit4", ["10000000000000000"]);
+  return { partySplit2 };
 });
