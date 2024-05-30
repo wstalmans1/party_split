@@ -29,9 +29,9 @@ contract PartySplit4 {
         for (uint256 i=0; i<members.length; i++) {
             address payable contributor = payable(members[i]);
             contributor.transfer(remainingBalancePerContributor);
-            payments(contributor) = false;
+            payments[contributor] = false;
         }
-        delete members
+        delete members;
     } 
 
 }
