@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/wimstalmans/Documents/Coding/Learning/alchemyuniversity/party_split/back/contracts/PartySplit2.sol": {
-      "lastModificationDate": 1717045402720,
-      "contentHash": "0290ce4a52bcc712f02641c86064cbe4",
+      "lastModificationDate": 1717045643719,
+      "contentHash": "49930e4d915d563550193c9bf83c82f7",
       "sourceName": "contracts/PartySplit2.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -34,7 +34,7 @@
         "^0.8.24"
       ],
       "artifacts": [
-        "Party"
+        "PartySplit"
       ]
     }
   }
