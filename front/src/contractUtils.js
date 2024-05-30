@@ -39,9 +39,8 @@ export async function rsvp() {
 export async function payBill(venueAddress, billAmount) {
   const provider = await getWeb3Provider();
   const contract = getContract(provider);
-  const billAmountInWei = billAmount;
   //const billAmountInWei = ethers.utils.parseEther(billAmount); // Convert the bill amount to Wei
-  const tx = await contract.payBill(venueAddress, billAmountInWei); // send the transaction
+  const tx = await contract.payBill(venueAddress, billAmount); // send the transaction
   await tx.wait(); // wait for transaction confirmation
   return tx.hash; // return transaction hash
 }

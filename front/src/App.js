@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connectMetamask, listenForAccountChanges } from './connectMetamask';
-import { getTotalDeposits, rsvp } from './contractUtils.js';
+import { getTotalDeposits, rsvp, payBill } from './contractUtils.js';
 //import { getCount} from './contractUtils.js';
 //import { incrementCount} from './contractUtils.js';
 //import { decrementCount} from './contractUtils.js';
@@ -12,6 +12,8 @@ function App() {
   const [balance, setBalance] = useState(null);
   const [loading, setLoading] = useState(false);
   const [transactionHash, setTransactionHash] = useState(null);
+  const [venueAddress, setVenueAddress] = useState('');
+  const [billAmount, setBillAmount] = useState('');
   //const [count, setCount] = useState(null);
   //const [loading, setLoading] = useState(false); //added loading state
 
@@ -62,6 +64,30 @@ function App() {
       setLoading(false);
     }
   }
+
+// Pay Bill transaction
+async function handlePayBill() {
+  if (!connectedAccount) {
+    alert('Please connect to Metamask first');
+    return;
+  }
+  if (!venueAddress || !billAmount) {
+    alert('Please enter both venue address and bill amount');
+    return;
+  }
+  setLoading(true);
+  try {
+    const txHash = await payBill(venueAddress, billAmount);
+    setTransactionHash(txHash);
+    alert(`Transaction successful with hash: ${txHash}`);
+    fetchBalance(); // refresh balance after paying bill
+  } catch (error) {
+    alert(`Transaction failed: ${error.message}`);
+  } finally {
+    setLoading(false);
+  }
+}
+
 
   // Get the value of the variable "count"
   /*
@@ -119,7 +145,13 @@ function App() {
         <p>Contract Balance: {balance !== null ? balance : 'loading...'} </p>
         {loading && <p>Waiting for your transaction to be confirmed...</p>}
         <button onClick={handleRSVP}>Click here to send 0.01 ETH to the partysplit contract</button>
-        {transactionHash && <p>Transaction Hash: {transactionHash} </p>}
+        <p>Transaction Hash: {transactionHash} </p>
+        <div>
+          <h3>Pay Bill</h3>
+          <input type="text" placeholder="Venue Address" value={venueAddress} onChange={(e) => setVenueAddress(e.target.value)} />
+          <input type="text" placeholder="Bill Amount" value={billAmount} onChange={(e) => setBillAmount(e.target.value)} />
+          <button onClick={handlePayBill} >Pay Bill</button>
+        </div>
         { /* <button onClick={handleIncrement}>Increment</button> */ }
         { /* <button onClick={handleDecrement}>Decrement</button> */ }
     </header>
