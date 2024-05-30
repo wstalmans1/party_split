@@ -5,6 +5,7 @@ import { getTotalDeposits, rsvp } from './contractUtils.js';
 //import { incrementCount} from './contractUtils.js';
 //import { decrementCount} from './contractUtils.js';
 import './App.css';
+import { contractAddress } from './contractUtils.js';
 
 function App() {
   const [connectedAccount, setConnectedAccount] = useState(null);
@@ -113,7 +114,8 @@ function App() {
   return (
     <header className="App-header">
         <button onClick={handleConnectMetamask}>Connect to Metamask</button>
-        <p>{connectedAccount ? connectedAccount : 'Not connected'}</p>
+        <p>Connected account: {connectedAccount ? connectedAccount : 'Not connected'}</p>
+        <p>Contract address: {contractAddress} </p>       
         <p>Contract Balance: {balance !== null ? balance : 'loading...'} </p>
         {loading && <p>Waiting for your transaction to be confirmed...</p>}
         <button onClick={handleRSVP}>Click here to send 0.01 ETH to the partysplit contract</button>
