@@ -53,12 +53,14 @@ function App() {
       alert('Please connect to Metamask first');
       return;
     }
+    setTransactionHash(null);
     setLoading(true);
     try {
       const txHash = await rsvp();
       setTransactionHash(txHash);
-      alert(`Transaction successful with hash: ${txHash}`);
-      fetchBalance(); //refresh balance after RSVP
+      if(await fetchBalance()){alert(`Transaction successfyl with hash: ${txHash}`)};
+      //await fetchBalance(); //refresh balance after RSVP
+      //alert(`Transaction successful with hash: ${txHash}`);
     } catch (error) {
       alert(`Transaction failed: ${error.message}`);
     } finally {
@@ -76,12 +78,12 @@ async function handlePayBill() {
     alert('Please enter both venue address and bill amount');
     return;
   }
+  setTransactionHash(null);
   setLoading(true);
   try {
     const txHash = await payBill(venueAddress, billAmount);
     setTransactionHash(txHash);
-    alert(`Transaction successful with hash: ${txHash}`);
-    fetchBalance(); // refresh balance after paying bill
+    if(fetchBalance()){alert(`Transaction successful with hash: ${txHash}`)}; // refresh balance after paying bill
   } catch (error) {
     alert(`Transaction failed: ${error.message}`);
   } finally {
