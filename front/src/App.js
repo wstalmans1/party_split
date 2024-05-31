@@ -154,7 +154,11 @@ async function handlePayBill() {
           <button onClick={handlePayBill} >Pay Bill</button>
         </div>
         <div>
-          <input type="text" placeholder="testAmount" value={testVar} onChange={(e) => setTestVar(e.target.value)} />
+          <input type="range" min="0" max="100" placeholder="testAmount" value={testVar} onChange={(e) => setTestVar(e.target.value)} />
+          <p>{testVar} </p>
+        </div>
+        <div>
+          <input type="month" value={testVar} onChange={(e) => setTestVar(e.target.value)} />
           <p>{testVar} </p>
         </div>
 
