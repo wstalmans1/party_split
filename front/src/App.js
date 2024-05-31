@@ -82,6 +82,7 @@ async function handlePayBill() {
   try {
     const txHash = await payBill(venueAddress, billAmount);
     setTransactionHash(txHash);
+    await fetchBalance();
     if(fetchBalance()){alert(`Transaction successful with hash: ${txHash}`)}; // refresh balance after paying bill
   } catch (error) {
     alert(`Transaction failed: ${error.message}`);
