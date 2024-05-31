@@ -14,6 +14,7 @@ function App() {
   const [transactionHash, setTransactionHash] = useState(null);
   const [venueAddress, setVenueAddress] = useState('');
   const [billAmount, setBillAmount] = useState('');
+  const [testVar, setTestVar] = useState('');
   //const [count, setCount] = useState(null);
   //const [loading, setLoading] = useState(false); //added loading state
 
@@ -152,6 +153,11 @@ async function handlePayBill() {
           <input type="text" placeholder="Bill Amount" value={billAmount} onChange={(e) => setBillAmount(e.target.value)} />
           <button onClick={handlePayBill} >Pay Bill</button>
         </div>
+        <div>
+          <input type="text" placeholder="testAmount" value={testVar} onChange={(e) => setTestVar(e.target.value)} />
+          <p>{testVar} </p>
+        </div>
+
         { /* <button onClick={handleIncrement}>Increment</button> */ }
         { /* <button onClick={handleDecrement}>Decrement</button> */ }
     </header>
