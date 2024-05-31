@@ -58,14 +58,13 @@ function App() {
     try {
       const txHash = await rsvp();
       setTransactionHash(txHash);
-      if(await fetchBalance()){alert(`Transaction successfyl with hash: ${txHash}`)};
-      //await fetchBalance(); //refresh balance after RSVP
-      //alert(`Transaction successful with hash: ${txHash}`);
+      await fetchBalance(); //refresh balance after RSVP
     } catch (error) {
       alert(`Transaction failed: ${error.message}`);
     } finally {
       setLoading(false);
     }
+    alert(`Transaction successful with hash: ${transactionHash}`);
   }
 
 // Pay Bill transaction
@@ -88,6 +87,8 @@ async function handlePayBill() {
     alert(`Transaction failed: ${error.message}`);
   } finally {
     setLoading(false);
+    setVenueAddress('');
+    setBillAmount('');
   }
 }
 
